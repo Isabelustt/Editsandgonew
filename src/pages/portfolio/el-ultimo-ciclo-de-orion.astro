@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="El último ciclo de Orión | Editsandgo.">
+  <section class="ficha-container">
+    <div class="ficha-header">
+      <!-- Galería con imagen principal y miniaturas -->
+      <div class="ficha-galeria">
+        <img
+          id="imagen-principal"
+          src="/imagenes/portada3recortada.png"
+          alt="El último ciclo de Orión"
+          class="ficha-imagen"
+        />
+
+        <div class="ficha-miniaturas">
+          <img
+            src="/imagenes/portada3recortada.png"
+            alt="Portada libro"
+            class="miniatura activa"
+            data-src="/imagenes/portada3recortada.png"
+          />
+          <img
+            src="/imagenes/ultimociclomaquet.png"
+            alt="Otra portada"
+            class="miniatura inactiva"
+            data-src="/imagenes/ultimociclomaquet.png"
+          />
+        </div>
+      </div>
+
+      <div class="ficha-info">
+        <h1>El último ciclo de Orión</h1>
+         <p>
+      Año 4210. La Tierra ya no es planeta madre, sino colonia industrial bajo dominio del Sindicato Interestelar. Los humanos, simples “habitantes útiles”.
+      Pero algo se mueve en el borde de la galaxia: una nave desaparecida hace siglos ha sido detectada. Y su comandante —una IA defectuosa llamada KERA— contiene secretos que podrían liberar o destruir a toda la especie.
+      Tass, una contrabandista con pasado militar, recibe la misión de interceptarla. Lo que no sabe es que la nave la espera a ella.
+      Y que el ciclo está a punto de reiniciarse.
+      </p>
+      </div>
+    </div>
+
+    <section class="ficha-seccion">
+      <h2>Detalles</h2>
+      <p><strong>Autor:</strong> Raúl Mena</p><br />
+        <p><strong>Dimensiones:</strong> 14.5 x 4.1 x 22.5 cm</p><br />
+        <p><strong>Género:</strong>  Ciencia ficción / space opera / thriller galáctico</p>
+    
+    </section>
+
+    <section class="ficha-seccion">
+      <h2>Maquetación</h2>
+      <p>
+        A continuación, mostramos cómo llegó el manuscrito y el resultado final tras nuestro
+        trabajo de maquetación:
+      </p>
+
+      <div class="maquetacion-container">
+        <div class="maquetacion-item">
+          <h3>Manuscrito original</h3>
+          <img src="/imagenes/manuscritohijos.png" alt="Manuscrito original" />
+        </div>
+        <div class="maquetacion-item">
+          <h3>Maquetación final</h3>
+          <img src="/imagenes/maquetacionhijos.png" alt="Maquetación final" />
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Modal para imagen ampliada -->
+  <div id="modal-imagen" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color: rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000;">
+    <img id="imagen-modal" src="" alt="Imagen ampliada" style="max-width:90vw; max-height:90vh; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.5);" />
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const imagenPrincipal = document.getElementById('imagen-principal');
+      const modal = document.getElementById('modal-imagen');
+      const imagenModal = document.getElementById('imagen-modal');
+      const miniaturas = Array.from(document.querySelectorAll('.miniatura'));
+
+      function marcarActiva(thumbActiva) {
+        miniaturas.forEach(t => {
+          if (t === thumbActiva) {
+            t.classList.remove('inactiva');
+            t.classList.add('activa');
+          } else {
+            t.classList.remove('activa');
+            t.classList.add('inactiva');
+          }
+        });
+      }
+
+      miniaturas.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const src = thumb.dataset.src || thumb.src;
+          imagenPrincipal.src = src;
+          marcarActiva(thumb);
+        });
+
+        thumb.setAttribute('tabindex', '0');
+        thumb.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            thumb.click();
+          }
+        });
+      });
+
+      const primeraActiva = miniaturas.find(t => t.classList.contains('activa')) || miniaturas[0];
+      if (primeraActiva) {
+        imagenPrincipal.src = primeraActiva.dataset.src || primeraActiva.src;
+        marcarActiva(primeraActiva);
+      }
+
+      // Mostrar modal al clicar imagen principal
+      imagenPrincipal.addEventListener('click', () => {
+        imagenModal.src = imagenPrincipal.src;
+        modal.style.display = 'flex';
+      });
+
+      // Cerrar modal al clicar fuera de la imagen
+      modal.addEventListener('click', (e) => {
+        if (e.target !== imagenModal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</BaseLayout>

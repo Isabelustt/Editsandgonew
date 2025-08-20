@@ -1,0 +1,38 @@
+---
+// Layout base
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Blog | Editsandgo.">
+  <section class="blog-grid-container">
+  <h1 class="blog-main-title">Nuestro Blog</h1>
+
+  <div class="blog-grid">
+    <!-- Entrada 1 -->
+    <article class="blog-card">
+      <a href="/entrada-1" class="blog-link">
+        <img src="/imagenes/5errores.png" alt="Imagen entrada 1" class="blog-img" />
+      </a>
+      <h2 class="blog-title">5 errores comunes al autopublicar tu novela</h2>
+      <p class="blog-date">25 julio 2025</p>
+    </article>
+
+    <!-- Entrada 2 -->
+    <article class="blog-card">
+      <a href="/blog/entrada-2.html" class="blog-link">
+        <img src="/imagenes/buenamaquetacion.png" alt="Imagen entrada 2" class="blog-img" />
+      </a>
+      <h2 class="blog-title">¿Porqué una buena maquetación es clave para tu libro?</h2>
+      <p class="blog-date">20 julio 2025</p>
+    </article>
+
+    <!-- Entrada 3 -->
+    <article class="blog-card">
+      <a href="/blog/entrada-3.html" class="blog-link">
+        <img src="/imagenes/revisar.png" alt="Imagen entrada 3" class="blog-img" />
+      </a>
+      <h2 class="blog-title">¿Crees que corregir es lo mismo que revisar?</h2>
+      <p class="blog-date">15 julio 2025</p>
+    </article>
+  </div>
+</section>
+</BaseLayout>

@@ -8,15 +8,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     
         <section class="contacto">
             <div class="contacto-left">
-                <h2>¡Hola!</h2><br>
-                <p>Puedes utilizar este formulario para ponerte en contacto con Editsandgo. ¡Te contestaremos en cuanto nos sea posible!</p>
-                <p>O si lo prefieres, puedes escribirnos a <strong>editsandgo@gmail.com</strong></p><br><br>
-                <p>Estaremos encantadas de ayudarte a dar forma a tus proyectos literarios.</p>
+                <h2>¿Tienes un libro entre manos? Háblanos.</h2><br>
+                <p>No hace falta que tengas todo claro. No importa si aún dudas, si te falta algo, si no sabes ni por dónde empezar.
+                Cuéntanos en qué punto estás y te diremos qué necesitas (aunque no seamos nosotras).<br>
+                Sin rodeos. Sin promesas vacías. Sin presupuestos inflados. Nos escribes, te leemos y te respondemos como personas normales que trabajan en esto todos los días.
+                <strong>Esto no es una multinacional. Es un equipo pequeño que se deja la piel por cada autor.</strong></p><br>
+                <p>📩 editsandgo@gmail.com<br>(Te leemos. De verdad. Nada de bots ni respuestas enlatadas.)</p><br>
+                <p>O usa el formulario. Dinos qué tienes, qué te falta y qué quieres conseguir. <br><strong>Y empezamos. Fácil y al grano.</strong></p>
             </div>
     
             <div class="contacto-right">
-                <h2>Cada palabra tuya cuenta.</h2>
-                <p>¿Nos dejas acompañarte?</p>
+                <h2>Cuéntanos qué tienes entre manos.</h2>
+                <p>Nada de formalidades. Escribe como si le contaras tu proyecto a una amiga.<br> Cuanto más claro seas, mejor podemos ayudarte.</p>
     
                 <form action="https://formsubmit.co/editsandgo@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="Nuevo mensaje de Editsandgo ✨">
@@ -27,24 +30,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <!-- Redirección (opcional) -->
                     <input type="hidden" name="_next" value="/gracias">
                 
-                    <label for="nombre">Tu nombre (obligatorio)</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="¿Cómo te llamas? (nos gusta saber con quién hablamos)">
                 
-                    <label for="email">Tu correo (obligatorio)</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Pon uno que leas">
+
+                    <label for="servicio">¿Tienes ya el manuscrito?</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="terminado">Si, terminado</option>
+                        <option value="casi">Casi, estoy en ello</option>
+                        <option value="no">No, pero tengo la idea</option>
+                        <option value="otro">Otro (cuéntanos abajo)</option>
+                    </select>
                 
                     <label for="servicio">¿Qué necesitas?</label>
                     <select id="servicio" name="servicio" required>
-                        <option value="">Selecciona una opción</option>
+                        <option value="">Marca lo que quieras, sin miedo</option>
                         <option value="correccion">Corrección ortotipográfica</option>
                         <option value="estilo">Corrección de estilo</option>
+                        <option value="ortoyestilo">Corrección ortotipográfica + estilo</option>
                         <option value="maquetacion">Maquetación</option>
                         <option value="diseño">Diseño de portada y contraportada</option>
                         <option value="pack">Pack completo</option>
                     </select>
                 
-                    <label for="mensaje">Aquí puedes contarnos tus ideas, dudas o sueños literarios:</label>
-                    <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+                    <label for="mensaje">Cuéntanos un poco más sobre tu libro o lo que necesitas:</label>
+                    <textarea id="mensaje" name="mensaje" rows="6" required placeholder="No hace falta un testamento, pero sí algo más que «quiero ayuda». ¿Género? ¿Extensión? ¿Dudas? Lo que quieras contarnos"></textarea>
                     <fieldset class="como-nos-conociste">
                         <legend>¿Cómo nos has conocido?</legend>
                         <div class="radio-options">
@@ -68,17 +81,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
                         </div>
                       </fieldset>
+                      <div class="acepta-politica">
+                     <div style="margin-top: 2rem;">
+                        <label>
+                          <input type="checkbox" name="acepta_politica" required>
+                          He leído y acepto la 
+                          <a href="/aviso-legal" target="_blank" style="color: #f2df05; text-decoration: underline;">
+                            política de privacidad
+                          </a>.
+                        </label>
+                      </div>
+                    </div>
                     <button type="submit">Enviar</button>
                     <p><small><small><strong>Información legal: </strong>Los datos proporcionados son incluidos automáticamente en un fichero cuya titularidad 
                         y responsabilidad corresponde a Editsandgo. Estos datos serán tratados de forma totalmente confidencial, 
                         siendo utilizados en exclusiva para realizar comunicaciones relacionadas con nuestros productos y servicios. 
                         No obstante, puede ejercitar el derecho de cancelación enviando un correo electrónico a  <strong>editsandgo@gmail.com</strong></small></small></p>
                     </form>
-                
-    
-                <div class="frases-adicionales">
-                    <p class="agradecimiento">Gracias por confiar en nosotras para dar forma a tu historia.</p>
-                </div>
             </div>
         </section>
     </div>

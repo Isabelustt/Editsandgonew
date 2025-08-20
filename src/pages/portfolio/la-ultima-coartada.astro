@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="La última coartada | Editsandgo.">
+  <section class="ficha-container">
+    <div class="ficha-header">
+      <!-- Galería con imagen principal y miniaturas -->
+      <div class="ficha-galeria">
+        <img
+          id="imagen-principal"
+          src="/imagenes/portada2recortada.png"
+          alt="El nombre de las bestias"
+          class="ficha-imagen"
+        />
+
+        <div class="ficha-miniaturas">
+          <img
+            src="/imagenes/portada2recortada.png"
+            alt="Portada libro"
+            class="miniatura activa"
+            data-src="/imagenes/portada2recortada.png"
+          />
+          <img
+            src="/imagenes/ultimacoartadamaquet.png"
+            alt="Otra portada"
+            class="miniatura inactiva"
+            data-src="/imagenes/ultimacoartadamaquet.png"
+          />
+           <img
+            src="/imagenes/nombrebestiasmaquet1.png"
+            alt="Otra portada"
+            class="miniatura inactiva"
+            data-src="/imagenes/nombrebestiasmaquet1.png"
+          />
+           <img
+            src="/imagenes/nombrebestiasmaquet2.png"
+            alt="Otra portada"
+            class="miniatura inactiva"
+            data-src="/imagenes/nombrebestiasmaquet2.png"
+          />
+            <img
+            src="/imagenes/nombrebestiasmaquet3.png"
+            alt="Otra portada"
+            class="miniatura inactiva"
+            data-src="/imagenes/nombrebestiasmaquet3.png"
+          />
+            <img
+            src="/imagenes/nombrebestiasmaquet4.png"
+            alt="Otra portada"
+            class="miniatura inactiva"
+            data-src="/imagenes/nombrebestiasmaquet4.png"
+          />
+        </div>
+      </div>
+
+      <div class="ficha-info">
+        <h1>La última coartada</h1>
+          <p>
+        Un juez retirado. Un crimen sin pruebas. Y una coartada que no aguanta ni media página.
+        Cuando el cadáver de una joven aparece en un viejo teatro de barrio, todas las pistas apuntan a Álvaro Olmos, exmagistrado y hombre intachable. Pero lo que parecía un caso sencillo se convierte en una red de mentiras, favores enterrados y justicia torcida.
+        A medida que la investigación avanza, alguien mueve los hilos desde las sombras. Y Álvaro tendrá que decidir: ¿seguir el juego o romper las reglas que juró defender?
+        Una novela que no da tregua. Cuando crees saberlo todo, cambia la pregunta.
+
+      </p>
+       
+      </div>
+    </div>
+
+    <section class="ficha-seccion">
+      <h2>Detalles</h2>
+       <p><strong>Autor:</strong> Alonso Colina</p><br />
+        <p><strong>Dimensiones:</strong> 14.5 x 4.1 x 22.5 cm</p><br />
+        <p><strong>Género:</strong> Thriller policial</p>
+    
+    </section>
+
+    <section class="ficha-seccion">
+      <h2>Maquetación</h2>
+      <p>
+        A continuación, mostramos cómo llegó el manuscrito y el resultado final tras nuestro
+        trabajo de maquetación:
+      </p>
+
+      <div class="maquetacion-container">
+        <div class="maquetacion-item">
+          <h3>Manuscrito original</h3>
+          <img src="/imagenes/maquetacion-original.png" alt="Manuscrito original" />
+        </div>
+        <div class="maquetacion-item">
+          <h3>Maquetación final</h3>
+          <img src="/imagenes/maquetacion-final.png" alt="Maquetación final" />
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Modal para imagen ampliada -->
+  <div id="modal-imagen" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color: rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000;">
+    <img id="imagen-modal" src="" alt="Imagen ampliada" style="max-width:90vw; max-height:90vh; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.5);" />
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const imagenPrincipal = document.getElementById('imagen-principal');
+      const modal = document.getElementById('modal-imagen');
+      const imagenModal = document.getElementById('imagen-modal');
+      const miniaturas = Array.from(document.querySelectorAll('.miniatura'));
+
+      function marcarActiva(thumbActiva) {
+        miniaturas.forEach(t => {
+          if (t === thumbActiva) {
+            t.classList.remove('inactiva');
+            t.classList.add('activa');
+          } else {
+            t.classList.remove('activa');
+            t.classList.add('inactiva');
+          }
+        });
+      }
+
+      miniaturas.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const src = thumb.dataset.src || thumb.src;
+          imagenPrincipal.src = src;
+          marcarActiva(thumb);
+        });
+
+        thumb.setAttribute('tabindex', '0');
+        thumb.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            thumb.click();
+          }
+        });
+      });
+
+      const primeraActiva = miniaturas.find(t => t.classList.contains('activa')) || miniaturas[0];
+      if (primeraActiva) {
+        imagenPrincipal.src = primeraActiva.dataset.src || primeraActiva.src;
+        marcarActiva(primeraActiva);
+      }
+
+      // Mostrar modal al clicar imagen principal
+      imagenPrincipal.addEventListener('click', () => {
+        imagenModal.src = imagenPrincipal.src;
+        modal.style.display = 'flex';
+      });
+
+      // Cerrar modal al clicar fuera de la imagen
+      modal.addEventListener('click', (e) => {
+        if (e.target !== imagenModal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</BaseLayout>
