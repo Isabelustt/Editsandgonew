@@ -1238,6 +1238,20 @@ button:hover {
   .ficha-container { max-width: 95%; }
   .ficha-imagen { width: 220px; height: 320px; }
   .miniatura { width: 70px; height: 70px; }
+
+.ficha-container {
+    position: relative; /* para que el absolute funcione */
+  }
+
+  .btn-volver {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.4rem;
+    padding: 0.6rem 1.2rem;
+    display: block; /* se controla desde JS */
+  }
+
 }
 
 /* Hasta 991px */

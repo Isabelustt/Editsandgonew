@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modal-imagen');
   const imagenModal = document.getElementById('imagen-modal');
   const miniaturas = Array.from(document.querySelectorAll('.miniatura'));
+  const btn = document.querySelector('.btn-volver');
 
   if (!imagenPrincipal || !modal || !imagenModal || miniaturas.length === 0) return;
 
@@ -13,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Miniaturas → cambiar imagen principal
   miniaturas.forEach(thumb => {
     thumb.addEventListener('click', () => {
       const src = thumb.dataset.src || thumb.src;
@@ -30,14 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Inicializar primera miniatura activa
   const primeraActiva = miniaturas.find(t => t.classList.contains('activa')) || miniaturas[0];
   if (primeraActiva) {
     imagenPrincipal.src = primeraActiva.dataset.src || primeraActiva.src;
     marcarActiva(primeraActiva);
   }
 
-  // Abrir modal al clicar imagen principal o maquetación
   document.querySelectorAll('[data-modal="true"]').forEach(img => {
     img.addEventListener('click', () => {
       if (window.edg_openImageModal) {
@@ -45,4 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Botón volver → solo en móviles
+  if (btn && window.innerWidth <= 768) {
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll < lastScroll) {
+        btn.style.display = 'block'; // scroll hacia arriba → mostrar
+      } else {
+        btn.style.display = 'none';  // scroll hacia abajo → ocultar
+      }
+
+      lastScroll = currentScroll;
+    });
+  }
 });
