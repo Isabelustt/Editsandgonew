@@ -1,29 +1,24 @@
 ---
-
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Inicio | Editsandgo.">
   <div class="main-container">
     <section class="home" id="home">
+      <img src="/imagenes/inicio.webp" alt="Inicio" loading="lazy" class="bg-image" width="1920" height="1080"/>
       <div class="content">
         <h3>Tu historia merece ser leída. Punto.</h3>
         <span>Te ayudamos a corregir, maquetar y diseñar tu novela para que esté lista para publicar.</span>
       </div>
     </section>
   </div>
-  <!--<div class="main-container">
-    <section class="home" id="home">
-      <div class="content">
-        <img src="/imagenes/logotipo2.png" alt="Editsandgo logo" style="height:220px;" />
-        <span>Escribes. Pulimos. Publicas</span>
-      </div>
-    </section>
-  </div>-->
 
   <h1 class="heading" id="heading">Nuestros servicios</h1>
 
   <section class="services" id="services">
+
+    <!-- Corrección ortotipográfica -->
     <div class="service-box ortotipografico">
+      <img src="/imagenes/correccion01ps.webp" alt="Corrección ortotipográfica" loading="lazy" class="bg-image" width="800" height="600"/>
       <div class="overlay-text">
         <h3>Corrección ortotipográfica</h3>
         <span>Tu historia puede ser brillante, pero si tiene una coma fuera de sitio, ya no lo parece.<br>
@@ -35,7 +30,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Corrección de estilo -->
     <div class="service-box right estilo">
+      <img src="/imagenes/correccion02ps.webp" alt="Corrección de estilo" loading="lazy" class="bg-image" width="800" height="600"/>
       <div class="overlay-text">
         <h3>Corrección de estilo</h3>
         <span>Aquí afinamos el alma del texto.<br>
@@ -47,7 +44,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Corrección combinada -->
     <div class="service-box combinado">
+      <img src="/imagenes/correccion03ps.webp" alt="Corrección combinada" loading="lazy" class="bg-image" width="800" height="600"/>
       <div class="overlay-text">
         <h3>Corrección ortotipográfica + corrección de estilo</h3>
         <span>Esto es cirugía completa.<br>No dejamos ni un error ni una frase floja. Revisamos cada letra, pero también el ritmo, la coherencia, el tono.<br>
@@ -58,7 +57,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Diseño de portadas -->
     <div class="service-box right portadas">
+      <img src="/imagenes/portadaps.webp" alt="Diseño de portadas" loading="lazy" class="bg-image" width="800" height="600"/>
       <div class="overlay-text">
         <h3>Diseño de portadas</h3>
         <span>Sí, la gente juzga el libro por la portada.<br>Y si la tuya no atrapa en dos segundos, da igual lo que haya dentro.<br>
@@ -70,7 +71,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Maquetación -->
     <div class="service-box maquetacion">
+      <img src="/imagenes/correccion04ps.webp" alt="Maquetación de libros" loading="lazy" class="bg-image" width="800" height="600"/>
       <div class="overlay-text">
         <h3>Maquetación</h3>
         <span>Tu libro puede ser una obra maestra, pero si está mal maquetado, parece amateur.<br>
@@ -82,7 +85,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Recorrido completo -->
     <div class="service-box right completa">
+      <img src="/imagenes/completops.webp" alt="Servicio completo" loading="lazy" class="bg-image" width="800" height="600"/>
       <div class="overlay-text">
         <h3>Recorrido completo</h3>
         <span>¿Quieres olvidarte de todo y llegar a un libro profesional sin quebrarte la cabeza?<br>
@@ -94,5 +99,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
     </div>
+
   </section>
 </BaseLayout>

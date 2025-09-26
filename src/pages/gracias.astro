@@ -3,48 +3,75 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="¡Gracias por tu mensaje! | Editsandgo.">
-  <div class="gracias-container">
-    <h1>¡Gracias por tu mensaje!</h1>
-    <p>Tu formulario se ha enviado correctamente. En Editsandgo leeremos tu mensaje con atención y te responderemos lo antes posible.</p>
-    <a class="volver" href="/">Volver a la página principal</a>
-  </div>
+  <section class="gracias">
+    <div class="gracias-container">
+      <h1>¡Gracias por tu mensaje!</h1>
+      <p>Tu formulario se ha enviado correctamente.<br>
+      En Editsandgo leeremos tu mensaje con atención y te responderemos lo antes posible.</p>
+      <a class="button volver" href="/">Volver a la página principal</a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .gracias-container {
-    text-align: center;
-    padding: 3rem;
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-    max-width: 500px;
-    margin: 5rem auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-  }
+.gracias {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 5rem 2rem;
+  background-color: #f9e79f;
+  position: relative;
+}
 
-  .gracias-container h1 {
-    color: #4a4a4a;
-    margin-bottom: 1rem;
-  }
+.gracias::before {
+  content: "";
+  position: absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background-color: rgba(255,255,255,0.85);
+  z-index: -1;
+}
 
-  .gracias-container p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
+.gracias-container {
+  text-align: center;
+  padding: 4rem 3rem;
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  max-width: 600px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #333;
+}
 
-  .volver {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.8rem 1.5rem;
-    background-color: #e0e0e0;
-    color: #333;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
+.gracias-container h1 {
+  font-size: 4rem;
+  color: #1A237E;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
 
-  .volver:hover {
-    background-color: #ccc;
-  }
+.gracias-container p {
+  font-size: 2rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.volver {
+  font-size: 1.8rem;
+  padding: 1rem 3rem;
+  background-color: #1A237E;
+  color: #fff;
+  border-radius: 2.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.volver:hover {
+  background-color: #145DA0;
+  transform: scale(1.05);
+}
 </style>

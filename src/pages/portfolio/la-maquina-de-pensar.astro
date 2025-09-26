@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookFicha from '../../components/BookFicha.astro';
+import ImageModal from '../../components/ImageModal.astro';
+
+const libro = {
+  title: "La máquina de pensar",
+  author: "Dr. Tomás Viñas",
+  description: `Este libro no es para expertos. Es para curiosos.
+Para los que alguna vez se han preguntado por qué hacen lo que hacen y por qué, muchas veces, lo repiten.
+Un viaje alucinante (y muy entretenido) por los atajos mentales que toma tu cerebro todos los días: los sesgos, las ilusiones, los errores que no ves hasta que te los explican. Y cómo todo eso te afecta más de lo que crees.`,
+  details: [
+    { label: "Autor", value: "Dr. Tomás Viñas" },
+    { label: "Edad lectura", value: "+18 años" },
+    { label: "Dimensiones", value: "14.5 x 4.1 x 22.5 cm" },
+    { label: "Género", value: "Ensayo / neurociencia" }
+  ],
+  imagenes: [
+    "/imagenes/portada3recortada.webp",
+    "/imagenes/orionmaquet.webp",
+    "/imagenes/pensarmaquet1.webp",
+    "/imagenes/orionmaquet2.webp",
+    "/imagenes/pensarmaquet3.webp",
+    "/imagenes/pensarmaquet4.webp"
+  ],
+  maquetacion: {
+    original: "/imagenes/manuscritoorion.webp",
+    final: "/imagenes/maquetacionorion.webp"
+  }
+};
+---
+
+<BaseLayout title={`${libro.title} | Editsandgo.`}>
+  <BookFicha {...libro} />
+  <ImageModal />
+
+  <!-- Aquí solo llamamos al script externo -->
+  <script src="/scripts/galeriaFicha.js" defer></script>
+</BaseLayout>

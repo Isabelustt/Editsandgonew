@@ -1,5 +1,10 @@
+
+
 ---
 const { title = 'Editsandgo.' } = Astro.props;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ImageModal from '../components/ImageModal.astro';
 ---
 
 <!DOCTYPE html>
@@ -13,66 +18,18 @@ const { title = 'Editsandgo.' } = Astro.props;
     <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
   </head>
 
   <body>
-  <header>
-    <input type="checkbox" id="toggler" />
-    <label for="toggler" class="fas fa-bars"></label>
-
-    <div class="logo-container">
-      <a href="/" class="logo">
-        <img src="/imagenes/logotipo2.png" alt="Editsandgo logo" style="height: 10rem;" />
-        
-      </a>
-      
-    </div>
-
-    <nav class="navbar">
-      <a href="/">Inicio</a>
-      <a href="/#heading">Servicios</a>
-      <a href="/nosotras">Sobre nosotras</a>
-      <a href="/contacto">Contacto</a>
-      <a href="/portfolio/portfolio">Portfolio</a>
-      <a href="/blog/blog">Blog</a>
-    </nav>
-  </header>
-
+    <Header />
 
     <main class="main-container">
-      <slot /> <!-- Aquí se inserta el contenido de cada página -->
+      <slot /> <!-- contenido de la página -->
     </main>
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-line"></div>
 
-    <div class="footer-social">
-      <a href="https://www.instagram.com/editsandgo/" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="mailto:editsandgo@gmail.com" aria-label="Enviar correo">
-        <i class="fas fa-envelope"></i>
-      </a>
-    </div>
+    <Footer />
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 Editsandgo · Todos los derechos reservados</p>
-      <div class="footer-links">
-        <a href="/aviso-legal#aviso-legal">Aviso Legal</a>
-        <a href="/aviso-legal#politica-privacidad">Política de Privacidad</a>
-        <a href="/aviso-legal#politica-cookies">Política de Cookies</a>
-
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- Modal para imagen ampliada -->
-<div id="modal-imagen" class="modal" onclick="cerrarModal()">
-  <span class="modal-cerrar" onclick="cerrarModal(event)">&times;</span>
-  <img class="modal-contenido" id="imagen-modal" src="" alt="Imagen ampliada" />
-</div>
-
-</body>
-
+    <!-- Añadimos el modal global (solo una vez en el layout) -->
+    <ImageModal />
+  </body>
 </html>

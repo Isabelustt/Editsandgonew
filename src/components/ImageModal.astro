@@ -1,0 +1,38 @@
+---
+/* Modal para mostrar imagen ampliada.
+   Este componente añade el markup + pequeño script para cerrar
+   con clic fuera de la imagen o con Escape. El estilo lo tienes ya en tu CSS global. */
+---
+<div id="modal-imagen" class="modal" style="display:none;">
+  <img class="modal-contenido" id="imagen-modal" src="" alt="Imagen ampliada" />
+</div>
+
+<script>
+  // Script encapsulado: espera al DOM y añade listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modal-imagen');
+    const imagenModal = document.getElementById('imagen-modal');
+
+    if (!modal || !imagenModal) return;
+
+    // Cerrar al clicar fuera de la imagen
+    modal.addEventListener('click', (e) => {
+      if (e.target !== imagenModal) modal.style.display = 'none';
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') modal.style.display = 'none';
+    });
+  });
+
+  // función de utilidad global pequeña para abrir el modal desde otras partes (galería)
+  // la exponemos en window para que tus galerías existentes puedan usarla:
+  window.edg_openImageModal = (src) => {
+    const modal = document.getElementById('modal-imagen');
+    const imagenModal = document.getElementById('imagen-modal');
+    if (!modal || !imagenModal) return;
+    imagenModal.src = src;
+    modal.style.display = 'flex';
+  };
+</script>

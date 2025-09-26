@@ -1,0 +1,59 @@
+---
+const { title, author, description, details, imagenes, maquetacion } = Astro.props;
+---
+
+<section class="ficha-container">
+    <a href="/portfolio/portfolio" class="btn-volver">← Volver al portfolio</a>
+  <div class="ficha-header">
+    <div class="ficha-galeria">
+      <!-- Imagen principal -->
+      <img
+        id="imagen-principal"
+        src={imagenes[0]}
+        alt={title}
+        class="ficha-imagen"
+        data-modal="true"
+      />
+
+      <!-- Miniaturas -->
+      <div class="ficha-miniaturas">
+        {imagenes.map((img, i) => (
+          <img
+            src={img}
+            alt={`Miniatura ${i + 1} de ${title}`}
+            class={`miniatura ${i === 0 ? 'activa' : 'inactiva'}`}
+            data-src={img}
+          />
+        ))}
+      </div>
+    </div>
+
+    <div class="ficha-info">
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+  </div>
+
+  <section class="ficha-seccion">
+    <h2>Detalles</h2>
+    {details.map(detalle => (
+      <p><strong>{detalle.label}:</strong> {detalle.value}</p>
+    ))}
+  </section>
+
+  <section class="ficha-seccion">
+    <h2>Maquetación</h2>
+    <p>A continuación, podrás ver cómo llegó el manuscrito y el resultado final tras nuestro trabajo de maquetación:</p>
+
+    <div class="maquetacion-container">
+      <div class="maquetacion-item">
+        <h3>Manuscrito original</h3>
+        <img src={maquetacion.original} alt="Manuscrito original" data-modal="true" />
+      </div>
+      <div class="maquetacion-item">
+        <h3>Maquetación final</h3>
+        <img src={maquetacion.final} alt="Maquetación final" data-modal="true" />
+      </div>
+    </div>
+  </section>
+</section>
