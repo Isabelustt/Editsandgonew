@@ -43,21 +43,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  // Botón volver → solo en móviles
-  if (btn && window.innerWidth <= 768) {
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-
-      if (currentScroll < lastScroll) {
-        btn.style.display = 'block'; // scroll hacia arriba → mostrar
-      } else {
-        btn.style.display = 'none';  // scroll hacia abajo → ocultar
-      }
-
-      lastScroll = currentScroll;
-    });
-  }
+ 
 });

@@ -1244,8 +1244,8 @@ button:hover {
   }
 
   .btn-volver {
-    position: absolute;
-    top: 1rem;
+    position: fixed;
+    top: 12rem;
     left: 1rem;
     font-size: 1.4rem;
     padding: 0.6rem 1.2rem;
