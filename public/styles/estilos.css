@@ -582,6 +582,68 @@ button:hover {
   font-family:'IBM Plex Sans', sans-serif;
 }
 
+/* MEDIA QUERIES BLOG */
+@media (max-width: 991px) {
+  .blog-grid-container {
+    padding: 4rem 2rem;
+  }
+
+  .blog-main-title {
+    font-size: 3rem;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .blog-title {
+    font-size: 2rem;
+  }
+
+  .blog-date {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-grid-container {
+    padding: 3rem 1.5rem;
+  }
+
+  .blog-main-title {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr; /* una columna en móvil */
+    gap: 2.5rem;
+  }
+
+  .blog-card {
+    max-width: 100%;
+  }
+
+  .blog-link {
+    border-radius: 1rem;
+  }
+
+  .blog-img {
+    border-radius: 1rem;
+  }
+
+  .blog-title {
+    font-size: 2rem;
+    margin-top: 1rem;
+  }
+
+  .blog-date {
+    font-size: 1.4rem;
+    color: #777;
+  }
+}
+
 
 /* ===============================
    ENTRADA1BLOG
@@ -706,7 +768,7 @@ button:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Versión móvil: icono encima del título */
+/* MEDIA QUERIES ENTRADABLOG*/
 @media (max-width: 768px) {
   .entrada-error-header {
     flex-direction: column;
