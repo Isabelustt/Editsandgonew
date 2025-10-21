@@ -669,10 +669,13 @@ button:hover {
 
 .entrada-folio {
   background-color: white;
-  padding: 2rem;
+  padding: 2rem 4rem; /* padding lateral mayor */
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  max-width: 1200px; /* limita ancho máximo */
+  margin: 0 auto; /* centra el contenedor */
 }
+
 
 .entrada-error {
   margin-top: 3rem;
